@@ -1,6 +1,6 @@
 import { Role } from "./Role";
 
-export interface IUser{
+export class User{
     id:number;
     name:string;
     user_name:string;
