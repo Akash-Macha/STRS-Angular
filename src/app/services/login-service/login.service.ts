@@ -13,23 +13,14 @@ import { type } from 'os';
 })
 export class LoginService {
 
-  private _url:string= 'http://localhost:8181/';
+  private _url:string= 'http://localhost:8181/user/Validate';
 
   constructor(private http:HttpClient) { }
 
-  validateAndGetRole(user_name:string, password:string): Observable<Role>{
+  validateAndGetRole(user: User): Observable<Role>{
+    console.log(user.user_name);
+    console.log(user.password);
 
-    alert('in service: username = ' + user_name);
-    alert('in service: password = ' + password);
-
-    // var response = new Role();
-    // response.name = "Admin";
-    // return new Observable<Role>(); // of(response);  //
-
-    var body_user = new User();
-    body_user.user_name = user_name;
-    body_user.password = password;
-
-    return this.http.post<Role>(this._url + '/Validate', body_user);
+    return this.http.post<Role>(this._url, user);
   }
 }

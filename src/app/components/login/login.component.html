@@ -4,10 +4,19 @@
 
 <h3>Login</h3>
 
-<form>
 
-    <label>User Name:</label><input type="text" #UserName><br>
-    <label>Password:</label><input type="password" #Password><br>
+<form #userForm="ngForm" (ngSubmit)="validate()" novalidate>
 
-    <button (click)="validate(UserName.value, Password.value)">Login</button>
+    {{ userForm.value | json }}
+
+    <hr />
+    {{ user | json }}
+
+<br>
+    <label>User Name:</label><input autofocus type="text" #user_name="ngModel" name="user_name" [(ngModel)]="user.user_name"><br>
+    <label>Password:</label><input type="password" #password="ngModel" name="password" [(ngModel)]="user.password"><br>
+
+    <button>Login</button>
 </form>
+
+{{ user.value | json }}
