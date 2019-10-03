@@ -1,1 +1,26 @@
-<p>show-all-tickets-se works!</p>
+<!-- {{ tickets | json }} -->
+
+<h2>All Tickets</h2>
+<h1>Change the Priority to intractable and add Action if neccessary!</h1>
+<table>
+  <tr>
+    <th>Ticket Id</th>
+    <th>Requested by</th>
+    <th>Message</th>
+    <th>Start Date</th>
+    <th>Requested End Date</th>
+    <th>Priority</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+
+  <tr *ngFor="let ticket of tickets">
+      <td>{{ ticket.id }}</td>
+      <td>{{ ticket.requested_by.name }}</td>
+      <td>{{ ticket.message }}</td>
+      <td>{{ ticket.start_date }}</td>
+      <td>{{ ticket.requested_end_date }}</td>
+      <td>{{ ticket.priority.value }}</td>
+      <td>{{ ticket.status.value }}</td>
+  </tr>
+</table>

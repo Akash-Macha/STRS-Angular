@@ -13,12 +13,9 @@ export class LoginService {
 
   private _url:string= 'http://localhost:8181';
 
-  constructor(private http:HttpClient) { }
+  constructor(private _http:HttpClient) { }
 
   validateAndGetRole(user: User): Observable<Role>{
-    // console.log(user.user_name);
-    // console.log(user.password);
-
-    return this.http.post<Role>(this._url + '/user/Validate', user);
+    return this._http.post<Role>(this._url + '/user/Validate', user);
   }
 }

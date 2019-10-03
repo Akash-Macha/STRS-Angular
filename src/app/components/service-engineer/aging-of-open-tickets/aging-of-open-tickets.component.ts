@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Statistic } from '../../../models/Statistic';
-import { HttpClient } from '@angular/common/http';
+import { ServiceEngineerService } from 'src/app/services/service-engineer-service/service-engineer.service';
+import { Ticket } from 'src/app/models/Ticket';
 
 @Component({
   selector: 'app-aging-of-open-tickets',
@@ -9,20 +9,24 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AgingOfOpenTicketsComponent implements OnInit {
 
-  public Statistics:any; //Statistic[];
+  public Statistics:Ticket[];
   
   private _url:string= 'http://localhost:8181';
 
-  constructor(private _http:HttpClient) { }
+  constructor(private _serviceEngineerService:ServiceEngineerService) { }
 
   ngOnInit() {
-
-    let user_name:string = sessionStorage.getItem('user_name');
-    // make rest call and 
-    this._http.get(this._url + '/serviceEngineer/getAgingOfOpenTicket/' + user_name).subscribe(
+    this._serviceEngineerService.getAgingOfOpenTicket().subscribe(
       (data) => {
         this.Statistics = data;
       }
-    )
+    );
+  }
+
+  getAge(statistic: any): number{ /* motivation: https://stackoverflow.com/a/43735902 */
+    let diff:number = Math.abs(new Date().getTime() - new Date(statistic.start_date).getTime());
+    let diffDays: number = Math.ceil(diff / (1000 * 3600 * 24)); 
+
+    return diffDays;
   }
 }

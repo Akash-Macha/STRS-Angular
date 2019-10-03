@@ -1,1 +1,13 @@
-<p>average-time-taken-per-severity works!</p>
+<!-- {{ Statistics | json }} -->
+
+<h2>Avergae time taken per Severity</h2>
+<table>
+  <tr>
+    <th>Severity</th>
+    <th>Average Time Taken</th>
+  </tr>
+  <tr *ngFor="let statistic of Statistics">
+    <td>{{ statistic[0] }}</td>
+    <td>{{ statistic[1] === undefined ? 'Nothing to show!' :  statistic[1]}}</td>
+  </tr>
+</table>

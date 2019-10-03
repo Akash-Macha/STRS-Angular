@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServiceEngineerComponent implements OnInit {
 
+  public user_name:string = sessionStorage.getItem('user_name');
+  
   constructor() { }
 
   ngOnInit() {

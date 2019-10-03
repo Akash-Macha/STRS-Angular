@@ -1,1 +1,26 @@
-<p>aging-of-open-tickets works!</p>
+<!-- <p>aging-of-open-tickets works!</p> -->
+<!-- {{ Statistics | json }} -->
+
+<h2>Aging of Open Tickets</h2>
+<table>
+  <tr>
+    <th>Ticket Id</th>
+    <th>Priority</th>
+    <th>Start Date</th>
+    <th>AGE</th>
+    <th>Status</th>
+    <th>Message</th>
+    <th>Requested by</th>
+    <th>Requested End Date</th>
+  </tr>
+    <tr *ngFor="let statistic of Statistics">
+    	<td> {{ statistic.id }}</td>
+    	<td> {{ statistic.priority.id }}</td>
+    	<td> {{ statistic.start_date }}</td>
+    	<td> {{ getAge(statistic) }}</td>
+    	<td> {{ statistic.status.value }}</td>
+    	<td> {{ statistic.message }}</td>
+    	<td> {{ statistic.requested_by.name }}</td>
+    	<td> {{ statistic.requested_end_date }}</td>
+	</tr>
+</table>

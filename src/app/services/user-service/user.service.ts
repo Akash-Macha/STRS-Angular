@@ -11,11 +11,11 @@ export class UserService {
 
   private _url:string= 'http://localhost:8181';
 
-  constructor(private http:HttpClient) { }
+  constructor(private _http:HttpClient) { }
 
   getAllTickets(): Observable<Ticket[]>{
     let user_name:string = sessionStorage.getItem('user_name');
 
-    return this.http.get<Ticket[]>(this._url + '/ticket/getAll/' + user_name);
+    return this._http.get<Ticket[]>(this._url + '/ticket/getAll/' + user_name);
   }
 }
