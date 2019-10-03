@@ -1,0 +1,28 @@
+<div>
+    <h2>All tickets</h2>
+    <div class="center">
+        <table #allTickets>
+            <tr>
+                <th>Ticket Id</th>
+                <th>Issue Category</th>
+                <th>Message</th>
+                <th>Start Date</th>
+                <th>Requested End Date</th>
+                <th>Service Engineer</th>
+                <th>Priority</th>
+                <th>Status</th>
+            </tr>
+
+            <tr *ngFor="let ticket of tickets">
+                <td>{{ ticket.id }}</td>
+                <td>{{ ticket.category.name }}</td>
+                <td>{{ ticket.message }}</td>
+                <td>{{ ticket.start_date }}</td>
+                <td>{{ ticket.requested_end_date }}</td>
+                <td>{{ ticket.assigned_to.name }}</td>
+                <td>{{ ticket.priority.value }}</td>
+                <td>{{ ticket.status.value }}</td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,22 +1,19 @@
-<!-- <p>login works!</p> -->
+<div>
 
-<h1>Welcome to {{title}}</h1>
+    <h1>Welcome to {{title}}</h1>
 
-<h3>Login</h3>
+    <h3>Login</h3>
+    <form #loginForm #userForm="ngForm" (ngSubmit)="validate()" novalidate>
 
+        <!-- {{ userForm.value | json }}
+        <hr />
+        {{ user | json }} -->
 
-<form #userForm="ngForm" (ngSubmit)="validate()" novalidate>
+        <br>
+        <label>User Name:</label><input autofocus type="text" #user_name="ngModel" name="user_name" [(ngModel)]="user.user_name"><br>
+        <label>Password:</label><input type="password" #password="ngModel" name="password" [(ngModel)]="user.password"><br>
 
-    {{ userForm.value | json }}
+        <button>Login</button>
+    </form>
 
-    <hr />
-    {{ user | json }}
-
-<br>
-    <label>User Name:</label><input autofocus type="text" #user_name="ngModel" name="user_name" [(ngModel)]="user.user_name"><br>
-    <label>Password:</label><input type="password" #password="ngModel" name="password" [(ngModel)]="user.password"><br>
-
-    <button>Login</button>
-</form>
-
-{{ user.value | json }}
+</div>

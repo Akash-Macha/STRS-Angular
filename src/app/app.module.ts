@@ -8,6 +8,11 @@ import { LoginComponent } from './components/login/login.component';
 import { UserComponent } from './components/user/user.component';
 import { ServiceEngineerComponent } from './components/service-engineer/service-engineer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LogoutComponent } from './components/logout/logout.component';
+import { ShowAllTicketsComponent } from './components/user/show-all-tickets/show-all-tickets.component';
+import { RaiseTicketComponent } from './components/user/raise-ticket/raise-ticket.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -15,7 +20,12 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     LoginComponent,
     UserComponent,
-    ServiceEngineerComponent
+    ServiceEngineerComponent,
+    LogoutComponent,
+    ShowAllTicketsComponent,
+    RaiseTicketComponent,
+    PageNotFoundComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -27,3 +37,4 @@ import { HttpClientModule } from '@angular/common/http';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

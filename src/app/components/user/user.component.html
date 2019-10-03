@@ -1,1 +1,11 @@
-<p>user works!</p>
+<div>
+    <h2>Welcome {{ user_name }} ! </h2>
+</div>
+
+<nav>
+    <a routerLink="/user/showAllTickets" routerLinkActive="active">Show All Tickets</a>
+    <a routerLink="/user/raiseTicket" routerLinkActive="active">Raise A Ticket</a>
+    <a routerLink="/logout" routerLinkActive="active" class="center button button2">Logout</a>
+</nav>
+
+<router-outlet></router-outlet>

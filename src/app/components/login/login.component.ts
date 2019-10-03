@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { LoginService } from '../../services/login-service/login.service';
 import { Role } from 'src/app/models/Role';
 import { User } from 'src/app/models/User';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, OutletContext } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   title:string= "Service Ticket Resolution System";
+
   role = new Role();
+
+  @Output() dataToEmit = new EventEmitter<Role>();
+
   user = new User();
 
   constructor(private _loginService:LoginService,
@@ -22,27 +26,31 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  getRole(){
-    let role:Role;
-
-    
-  }
   validate(){
-    console.log(this.user.user_name);
-    console.log(this.user.password);
-    
+ 
     this._loginService.validateAndGetRole(this.user)
     .subscribe(
-      (data) => { 
-        let role:Role = data;
+      (data) => {
+        // emit the role object so that LoginComponent
+        // can be displayed accordingly !
+        this.dataToEmit.emit(data);
 
-        if(role.name === 'End User'){
-          this.router.navigate(['user']);
+        // set the userName into localStorage
+        if(window.sessionStorage){
+          let user_name:string = this.user.user_name;
+          let roleName:string = data.name;
+
+          sessionStorage.setItem("user_name", user_name);
+          sessionStorage.setItem("roleName", roleName);
+          console.log('--> ' + sessionStorage.getItem('user_name'));
         }
 
-
+        // Route to user's componenet
+        this.router.navigate(['/user']);
      },
-      (error) => {console.error('Error! ', error) }
+      (error) => {
+        console.error('Error! ', error);
+      }
       );
   }
 }
