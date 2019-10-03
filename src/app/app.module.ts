@@ -14,6 +14,11 @@ import { RaiseTicketComponent } from './components/user/raise-ticket/raise-ticke
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { HomeComponent } from './components/home/home.component';
 
+import { ShowAllTicketsSEComponent } from './components/service-engineer/show-all-tickets-se/show-all-tickets-se.component';
+import { AverageTimeTakenPerEngineerComponent } from './components/service-engineer/average-time-taken-per-engineer/average-time-taken-per-engineer.component';
+import { AverageTimeTakenPerSeverityComponent } from './components/service-engineer/average-time-taken-per-severity/average-time-taken-per-severity.component';
+import { AgingOfOpenTicketsComponent } from './components/service-engineer/aging-of-open-tickets/aging-of-open-tickets.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +30,12 @@ import { HomeComponent } from './components/home/home.component';
     ShowAllTicketsComponent,
     RaiseTicketComponent,
     PageNotFoundComponent,
-    HomeComponent
+    HomeComponent,
+
+    ShowAllTicketsSEComponent,
+    AverageTimeTakenPerEngineerComponent,
+    AverageTimeTakenPerSeverityComponent,
+    AgingOfOpenTicketsComponent
   ],
   imports: [
     BrowserModule,

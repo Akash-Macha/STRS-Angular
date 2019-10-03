@@ -31,6 +31,26 @@ export class LoginComponent implements OnInit {
     this._loginService.validateAndGetRole(this.user)
     .subscribe(
       (data) => {
+
+        if(data.name === 'End User'){
+          // Route to user's componenet
+          this.router.navigate(['/user']);
+
+        }else if(data.name === 'Service Engineer'){
+
+          this.router.navigate(['/serviceEngineer']);
+        }
+        // else if(data.name === 'Admin'){
+
+        //   this.router.navigate(['/admin']);
+        // }
+        else{
+          // Wrong Credentials
+          // navigate to login page with optional parameters and display Invalid Credentials
+
+          return;
+        }
+
         // emit the role object so that LoginComponent
         // can be displayed accordingly !
         this.dataToEmit.emit(data);
@@ -45,8 +65,6 @@ export class LoginComponent implements OnInit {
           console.log('--> ' + sessionStorage.getItem('user_name'));
         }
 
-        // Route to user's componenet
-        this.router.navigate(['/user']);
      },
       (error) => {
         console.error('Error! ', error);

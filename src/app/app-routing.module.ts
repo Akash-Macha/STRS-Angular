@@ -10,10 +10,12 @@ import { RaiseTicketComponent } from './components/user/raise-ticket/raise-ticke
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { AgingOfOpenTicketsComponent } from './components/service-engineer/aging-of-open-tickets/aging-of-open-tickets.component';
+import { AverageTimeTakenPerEngineerComponent } from './components/service-engineer/average-time-taken-per-engineer/average-time-taken-per-engineer.component';
+import { AverageTimeTakenPerSeverityComponent } from './components/service-engineer/average-time-taken-per-severity/average-time-taken-per-severity.component';
+import { ShowAllTicketsSEComponent } from './components/service-engineer/show-all-tickets-se/show-all-tickets-se.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo: '/login', pathMatch: 'full' },
-
   { path:'', redirectTo:'/login', pathMatch: 'full'},
   { path:'login', component: LoginComponent},
   { path:'logout', component: LogoutComponent},
@@ -27,11 +29,17 @@ const routes: Routes = [
       { path:'showAllTickets', component: ShowAllTicketsComponent },
       { path:'raiseTicket', component: RaiseTicketComponent },
     ]
-
   },
   { 
     path: 'serviceEngineer', 
-    component: ServiceEngineerComponent 
+    component: ServiceEngineerComponent,
+
+    children: [
+      { path: 'agingOfOpenTickets', component: AgingOfOpenTicketsComponent},
+      { path: 'averageTimeTakenPerEngineer', component: AverageTimeTakenPerEngineerComponent},
+      { path: 'averageTimeTakenPerSeverity', component: AverageTimeTakenPerSeverityComponent},
+      { path: 'showAllTicketsSE', component: ShowAllTicketsSEComponent},
+    ]
   },
 
   { path: '**', component: PageNotFoundComponent }
@@ -51,5 +59,11 @@ export const routingComponents = [
   ShowAllTicketsComponent,
   RaiseTicketComponent,
   HomeComponent,
+
+  AgingOfOpenTicketsComponent,
+  AverageTimeTakenPerEngineerComponent,
+  AverageTimeTakenPerSeverityComponent,
+  ShowAllTicketsSEComponent,
+
   PageNotFoundComponent
 ]
