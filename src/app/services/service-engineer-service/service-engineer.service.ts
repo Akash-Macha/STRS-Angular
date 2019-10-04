@@ -18,14 +18,12 @@ export class ServiceEngineerService {
     return this._http.get<Ticket[]>(this._url + '/serviceEngineer/getAgingOfOpenTicket/' + user_name);
   }
 
-  getStatsOfEngineer(): Observable<any>{
-    let user_name:string = sessionStorage.getItem('user_name');
-
-    return this._http.get<any>(this._url + '/serviceEngineer/getStatsOfEngineer/');
+  getStatsOfEngineers(): Observable<any>{
+    return this._http.get<any>(this._url + '/serviceEngineer' + '/getStatsOfEngineers');
   }
 
   getStatsOfSeverity(): Observable<any>{
-    return this._http.get<any>(this._url + '/serviceEngineer/getStatsOfSeverity/');
+    return this._http.get<any>(this._url + '/serviceEngineer/getStatsOfSeverity');
   }
   
   getAllTickets(): Observable<Ticket[]>{

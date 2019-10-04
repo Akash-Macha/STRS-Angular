@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RaiseTicketComponent implements OnInit {
 
-  constructor() { }
+  listOfDepartments:any;
+  listOfPriorities:any;
+
+  constructor(private _http:) { }
 
   ngOnInit() {
+
   }
 
 }

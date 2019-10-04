@@ -1,1 +1,49 @@
 <p>raise-ticket works!</p>
+
+<div class="container-fluid">
+    <h2>Raise a Ticket</h2>
+    <form #newTicket="ngForm">
+        {{ newTicket | json }}
+
+        <div class="form-group">
+            <label for=""></label>
+
+        </div>
+
+    </form>
+</div>
+
+<h3>Raise Ticket:</h3>
+<div class="container">
+    <form #newTicket="ngForm">
+
+        <label for="IssueCategory">Issue Category</label>
+        <select id="IssueCategory" name="IssueCategory" *ngFor="">
+
+            <option value="<%= department.getName() %>"></option>
+
+        </select>
+        <!-- END: getListOfDepartments - make request to rest!  -->
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Type your message here!" style="height:120px"></textarea>
+
+        <!-- START: getAvailablePriorities - make request to rest!  -->
+        <label for="priority">Priority</label>
+        <select id="priority" name="priority"> 
+
+        </select>
+        <!-- END: getAvailablePriorities - make request to rest!  -->
+
+        <label for="StartDate">Start date:</label>
+        <input type="date" value="<%= LocalDate.now() %>" id="StartDate" name="start_date" id="StartDate" readonly >
+        <br>
+
+        <label for="RequestedEndDate">Requested End Date:</label>
+        <input type="date" value="<%= LocalDate.now() %>" name="requested_end_date" id="RequestedEndDate" onchange="validateDate();" >
+        <br><br>
+
+        <input type="submit" value="Submit">
+
+    </form>
+</div>

@@ -15,9 +15,10 @@ export class AverageTimeTakenPerEngineerComponent implements OnInit {
   constructor(private _serviceEngineerService:ServiceEngineerService) { }
 
   ngOnInit() {
-    this._serviceEngineerService.getStatsOfEngineer().subscribe(
+    this._serviceEngineerService.getStatsOfEngineers().subscribe(
       (data) => {
         this.Statistics = data;
+        console.log("data in averageTime Taken per engineer = " + data);
       }
     );
   }
