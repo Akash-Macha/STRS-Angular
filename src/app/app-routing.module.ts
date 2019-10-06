@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-
-import { LoginComponent } from './components/login/login.component';
-import { UserComponent } from './components/user/user.component';
-import { ServiceEngineerComponent } from './components/service-engineer/service-engineer.component';
-import { ShowAllTicketsComponent } from './components/user/show-all-tickets/show-all-tickets.component';
-import { RaiseTicketComponent } from './components/user/raise-ticket/raise-ticket.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AgingOfOpenTicketsComponent } from './components/service-engineer/aging-of-open-tickets/aging-of-open-tickets.component';
 import { AverageTimeTakenPerEngineerComponent } from './components/service-engineer/average-time-taken-per-engineer/average-time-taken-per-engineer.component';
 import { AverageTimeTakenPerSeverityComponent } from './components/service-engineer/average-time-taken-per-severity/average-time-taken-per-severity.component';
+import { ServiceEngineerComponent } from './components/service-engineer/service-engineer.component';
 import { ShowAllTicketsSEComponent } from './components/service-engineer/show-all-tickets-se/show-all-tickets-se.component';
+import { RaiseTicketComponent } from './components/user/raise-ticket/raise-ticket.component';
+import { ShowAllTicketsComponent } from './components/user/show-all-tickets/show-all-tickets.component';
+import { UserComponent } from './components/user/user.component';
+
+
 
 const routes: Routes = [
   { path:'', redirectTo:'/login', pathMatch: 'full'},
@@ -42,6 +42,7 @@ const routes: Routes = [
     ]
   },
 
+  { path: 'pageNotFound', component: PageNotFoundComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

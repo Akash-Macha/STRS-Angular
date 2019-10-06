@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Ticket } from '../../../models/Ticket';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user-service/user.service';
-import { JsonPipe } from '@angular/common';
+import { Ticket } from '../../../models/Ticket';
+
 
 @Component({
   selector: 'app-show-all-tickets',
@@ -13,16 +13,46 @@ export class ShowAllTicketsComponent implements OnInit {
 
   public tickets:Ticket[];
 
-  constructor(private _userService:UserService) { }
+  public insertStatus:string;
 
-  ngOnInit() {
+  // mySubscription: any;
 
-    // make a rest call and get all the tickets
-    // url:  ticket/getAll/{user_name}
+  constructor(private _userService:UserService,
+			private activatedRoute:ActivatedRoute, 
+			private router:Router) {
+        
+      }
+
+  fetchTickets(){
     this._userService.getAllTickets().subscribe(
       (data) => {
         this.tickets = data;
       },
     );
   }
+
+  ngOnInit() {
+    // console.log("\n\nIMPORTANT CALL ngOnInit() {\n\n");
+    
+
+    // make a rest call and get all the tickets
+    // url:  ticket/getAll/{user_name}
+    this.fetchTickets();
+
+    // accetp url parameter to display "Successfully submitted the ticket status"
+    this.activatedRoute.paramMap.subscribe( (params: ParamMap) => {
+      console.log('params.get(\'insertStatus\') = ' + params.get('insertStatus') );
+      this.insertStatus = params.get('insertStatus');
+    } );
+
+
+    this.activatedRoute.queryParamMap.subscribe((paramMap: ParamMap) => {
+      const refresh = paramMap.get('refresh');
+      if (refresh) {
+        this.fetchTickets();
+      }
+    });
+
+  }
+
 }

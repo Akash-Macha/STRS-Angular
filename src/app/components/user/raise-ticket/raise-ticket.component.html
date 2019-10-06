@@ -1,49 +1,79 @@
-<p>raise-ticket works!</p>
-
 <div class="container-fluid">
     <h2>Raise a Ticket</h2>
-    <form #newTicket="ngForm">
-        {{ newTicket | json }}
+    <form #ticketForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+        {{ ticketForm.value | json }}
 
-        <div class="form-group">
-            <label for=""></label>
-
+        <div class="form-group" >
+            <label for="issueCategory">Issue Category</label>
+            <select 
+            class="custom-select" 
+            id="issueCategory"
+            #issueCategory="ngModel" 
+            name="issueCategory" 
+            [(ngModel)]="newTicket.category.name">
+                <option selected>Select a category</option>
+                <option *ngFor="let department of listOfDepartments" 
+                >{{ department.name }}</option>
+            </select>
         </div>
 
-    </form>
-</div>
+        <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea 
+            class="form-control" 
+            name="message"
+            id="message"
+            #message
+            [(ngModel)]="newTicket.message"
+            rows="3"></textarea>
+        </div>
 
-<h3>Raise Ticket:</h3>
-<div class="container">
-    <form #newTicket="ngForm">
+        <!-- {{ newTicket.priority.value }} -->
+        <div class="form-group">
+            <label for="Priority">Priority</label>
+            <select 
+            class="custom-select" 
+            #priority="ngModel" 
+            name="priority" 
+            
+            [(ngModel)]="newTicket.priority.value"
+            [class.is-invalid]="priorityHasError && priority.touched" >
+                <option value="default" selected>Select a Priority</option>
+                <option *ngFor="let eachPriority of listOfPriorities">{{ eachPriority.value }}</option>
+            </select>
+            <small class="text-danger" [class.d-none]="!priorityHasError || priority.untouched">Please choose a priority</small>      
+        </div>
 
-        <label for="IssueCategory">Issue Category</label>
-        <select id="IssueCategory" name="IssueCategory" *ngFor="">
+        <div>
+            <mat-form-field>
+                <mat-label>Start Date</mat-label>
+                <input 
+                matInput 
+                [matDatepicker]="myStartDate" 
+                [matDatepickerFilter]="dateFilter"
+                [(value)]="newTicket.start_date" 
+                readonly [readOnly]="readonly" >
+                <!-- <mat-datepicker-toggle matSuffix [for]="myStartDate" ></mat-datepicker-toggle> -->
+                <mat-datepicker #myStartDate></mat-datepicker>
+            </mat-form-field>
+        </div>
 
-            <option value="<%= department.getName() %>"></option>
+        <div>
+            <mat-form-field>
+                <mat-label>Requested End Date</mat-label>
+                <input 
+                matInput 
+                [matDatepicker]="myRequestedEndDate"
+                [min]="minDate"
+                [max]="maxDate"
+                [matDatepickerFilter]="dateFilter"
+                [(value)]="newTicket.requested_end_date" 
+                (dateChange)="updateRequestedEndDate('change', $event)">
+                <mat-datepicker-toggle matSuffix [for]="myRequestedEndDate" ></mat-datepicker-toggle>
+                <mat-datepicker #myRequestedEndDate></mat-datepicker>
+            </mat-form-field>
+        </div>
 
-        </select>
-        <!-- END: getListOfDepartments - make request to rest!  -->
-
-        <label for="message">Message</label>
-        <textarea id="message" name="message" placeholder="Type your message here!" style="height:120px"></textarea>
-
-        <!-- START: getAvailablePriorities - make request to rest!  -->
-        <label for="priority">Priority</label>
-        <select id="priority" name="priority"> 
-
-        </select>
-        <!-- END: getAvailablePriorities - make request to rest!  -->
-
-        <label for="StartDate">Start date:</label>
-        <input type="date" value="<%= LocalDate.now() %>" id="StartDate" name="start_date" id="StartDate" readonly >
-        <br>
-
-        <label for="RequestedEndDate">Requested End Date:</label>
-        <input type="date" value="<%= LocalDate.now() %>" name="requested_end_date" id="RequestedEndDate" onchange="validateDate();" >
-        <br><br>
-
-        <input type="submit" value="Submit">
-
+        <button class="btn btn-primary" [disabled]="ticketForm.form.invalid" type="submit">Submit form</button>
     </form>
 </div>

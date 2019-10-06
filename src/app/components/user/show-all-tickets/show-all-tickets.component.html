@@ -1,4 +1,10 @@
 <div>
+    <h3 *ngIf="insertStatus !== null">
+        Successfully submitted the ticket!
+    </h3>
+</div>
+
+<div>
     <h2>All tickets</h2>
     <div class="center">
         <table #allTickets>
@@ -21,6 +27,7 @@
                 <td>{{ ticket.requested_end_date }}</td>
                 <td>{{ ticket.assigned_to.name }}</td>
                 <td>{{ ticket.priority.value }}</td>
+                
                 <td>{{ ticket.status.value }}</td>
             </tr>
         </table>

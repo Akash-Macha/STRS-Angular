@@ -25,3 +25,5 @@ table {
     padding: 10px;
   }
   /* END- align Div in center : class="center" */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,8 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { LoginService } from '../../services/login-service/login.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Role } from 'src/app/models/Role';
 import { User } from 'src/app/models/User';
-import { ActivatedRoute, Router, OutletContext } from '@angular/router';
+import { LoginService } from '../../services/login-service/login.service';
 
 @Component({
   selector: 'app-login',
@@ -31,13 +31,10 @@ export class LoginComponent implements OnInit {
     this._loginService.validateAndGetRole(this.user)
     .subscribe(
       (data) => {
-
         if(data.name === 'End User'){
           // Route to user's componenet
           this.router.navigate(['/user']);
-
         }else if(data.name === 'Service Engineer'){
-
           this.router.navigate(['/serviceEngineer']);
         }
         // else if(data.name === 'Admin'){
