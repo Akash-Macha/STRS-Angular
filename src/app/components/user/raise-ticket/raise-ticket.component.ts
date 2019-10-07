@@ -21,9 +21,10 @@ export class RaiseTicketComponent implements OnInit {
     public maxDate = new Date(this.minDate.getFullYear() + 2 , this.minDate.getMonth() , this.minDate.getDay());
   
     // new Ticket to be submitted
-    public newTicket: Ticket;// = new Ticket();
+    public newTicket: Ticket;
     
-	constructor(private _userService:UserService,
+	constructor(
+        private _userService:UserService,
 		private route:ActivatedRoute, 
 		private router:Router) { }
 
@@ -58,35 +59,12 @@ export class RaiseTicketComponent implements OnInit {
 		// setting up the requested user_name
 		this.newTicket.requested_by.user_name = sessionStorage.getItem('user_name');
 
-		
-		console.log("sessionStorage.getItem('user_name'); = " + sessionStorage.getItem('user_name'));
-		console.log("newTicket = " + JSON.stringify(this.newTicket));
-		console.log("day = " + this.newTicket.requested_end_date);
-
-		let responseStatus: string;
 		this._userService.insertTicket(this.newTicket).subscribe(
 			data => {
-				console.log("data in _userService.insertTicket = ");
-				console.log(data);
-				responseStatus = data;
-				console.log(responseStatus);
+                this.router.navigate( ['../showAllTickets', {insertStatus: 'inserted'}], {relativeTo: this.route} );
 			},
 			error => console.log("ERROR in _userService.insertTicket" + JSON.stringify(error))
-		)
-
-		this.router.navigate( ['../showAllTickets', {insertStatus: 'inserted'}], {relativeTo: this.route} );
-
-
-		// this.router.navigateByUrl('../showAllTickets', {skipLocationChange: true}).then(()=>
-		// this.router.navigate( ['', {insertStatus: 'inserted'}], {relativeTo: this.route}  )); 
-
-		// this.router.navigateByUrl('/pageNotFound', { skipLocationChange: true });
-		// this.router.navigate( ['../showAllTickets', {insertStatus: 'inserted'}], {relativeTo: this.route} );
-		// location.reload();
-
-		// this.router.navigate(['user/showAllTickets', {insertStatus: 'inserted'}], {
-		// 	queryParams: {refresh: new Date().getTime()}
-		//  });
+		);
 	  }
 
 	// Filtering out Saturdays and Sundays
