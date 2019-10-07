@@ -34,6 +34,15 @@ export class ShowAllTicketsSEComponent implements OnInit {
         );
     }
 
+    ngOnDestroy(): void {
+        
+        // motivation: https://blog.angularindepth.com/the-best-way-to-unsubscribe-rxjs-observable-in-the-angular-applications-d8f9aa42f6a0
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
+
+        console.log("\n ngOnDestroy in SHOW-ALL-TICKETS Component!");
+    }
+
     closeTicket(ticketId: string) {
         console.log("new Priority value in updateTicketPriorty funtion = " + ticketId);
 
@@ -50,13 +59,10 @@ export class ShowAllTicketsSEComponent implements OnInit {
         this._router.navigate(['/serviceEngineer/closeTicket', ticketId]);
     }
 
+    // filterByCurrentPriority( currentPriority: string ){
+    //     console.log("-------------->\n " + JSON.stringify( this.listOfPriorities) );
+    
+    //     return this.listOfPriorities.filter( x => x.value != currentPriority );
+    // }
 
-    ngOnDestroy(): void {
-        
-        // motivation: https://blog.angularindepth.com/the-best-way-to-unsubscribe-rxjs-observable-in-the-angular-applications-d8f9aa42f6a0
-        this.unsubscribe$.next();
-        this.unsubscribe$.complete();
-
-        console.log("\n ngOnDestroy in SHOW-ALL-TICKETS Component!");
-    }
 }

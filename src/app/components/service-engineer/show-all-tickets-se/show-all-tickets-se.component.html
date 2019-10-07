@@ -1,28 +1,51 @@
 <!-- {{ tickets | json }} -->
 
 <h2>All Tickets</h2>
-<h1>Change the Priority to intractable and add Action if neccessary!</h1>
+<!-- <h1>Change the Priority to intractable and add Action if neccessary!</h1> -->
 <table>
-  <tr>
-    <th>Ticket Id</th>
-    <th>Requested by</th>
-    <th>Message</th>
-    <th>Start Date</th>
-    <th>Requested End Date</th>
-    <th>Priority</th>
-    <th>Status</th>
-    <th>Action</th>
-  </tr>
+    <tr>
+        <th>Ticket Id</th>
+        <th>Requested by</th>
+        <th>Message</th>
+        <th>Start Date</th>
+        <th>Requested End Date</th>
+        <th>Priority</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
 
-  <tr *ngFor="let ticket of tickets">
-      <td>{{ ticket.id }}</td>
-      <td>{{ ticket.requested_by.name }}</td>
-      <td>{{ ticket.message }}</td>
-      <td>{{ ticket.start_date }}</td>
-      <td>{{ ticket.requested_end_date }}</td>
-      <td>{{ ticket.priority.value }}</td>
+    <tr *ngFor="let ticket of tickets">
+        <td>{{ ticket.id }}</td>
+        <td>{{ ticket.requested_by.name }}</td>
+        <td>{{ ticket.message }}</td>
+        <td>{{ ticket.start_date }}</td>
+        <td>{{ ticket.requested_end_date }}</td>
 
-      <!-- <td> 
+        <td *ngIf=" ticket.status.code === 'ON_GO' ; else showPriority ">
+            <div class="navbar">
+                <div class="dropdown">
+                    <button class="dropbtn"> 
+                        {{ ticket.priority.value }}
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+
+                    <div class="dropdown-content" *ngFor="let otherPriority of listOfPriorities">
+                        <!-- need: ticketId & newPriority -->
+                        <!-- <p *ngFor="let otherPriority of filterByCurrentPriority(ticket.priority.value)"> -->
+                            <a [routerLink]="['/updateTicketPriority', ticket.id, otherPriority.value ]" routerLinkActive="active">
+                                {{ otherPriority.value }}
+                            </a>
+                        <!-- </p> -->
+                    </div>
+                </div>
+            </div>
+        </td>
+
+        <ng-template #showPriority>
+            <td>{{ ticket.priority.value }}</td>
+        </ng-template>
+
+        <!-- <td> 
           if(listOfTickets.get(i).getStatus().getCode().equals("ON_GO")){
             
             <div class="navbar">
@@ -47,29 +70,14 @@
           }
       </td> -->
 
+        <td>{{ ticket.status.value }}</td>
 
-      <!-- <td *ngIf="ticket.status.value === 'On going'">
-        <mat-form-field>
-          <mat-select [(ngModel)]="newPriorityValue" name="newPriority">
-            <mat-option *ngFor="let priority of listOfPriorities" [value]="ticket.priority.value">
-              {{priority.value}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </td> -->
+        <!-- Action: display close ticket button, if ticket is on_going! -->
+        <button class="btn btn-dark" *ngIf="ticket.status.value === 'On going'; else displayNothing "
+            [(value)]="ticket.id" (click)="closeTicket( ticket.id )">Close Ticket</button>
 
-
-      <td>{{ ticket.status.value }}</td>
-
-      <!-- Action: display close ticket button, if ticket is on_going! -->
-      <button class="btn btn-dark" 
-      *ngIf="ticket.status.value === 'On going'; else displayNothing "
-      [(value)]="ticket.id"
-      (click)="closeTicket( ticket.id )"
-      >Close Ticket</button>
-
-      <ng-template #displayNothing>
-        <td></td>
-    </ng-template>
-  </tr>
+        <ng-template #displayNothing>
+            <td></td>
+        </ng-template>
+    </tr>
 </table>

@@ -42,7 +42,7 @@ const routes: Routes = [
             { path: 'showAllTicketsSE', component: ShowAllTicketsSEComponent },
 
             // HttpType: PUT
-            { path: 'updateTicketPriority', component: UpdateTicketPriorityComponent },
+            { path: 'updateTicketPriority/:ticketId/:newPriorityValue', component: UpdateTicketPriorityComponent },
 
             // HttpType: DELETE
             { path: 'closeTicket/:ticketId', component: CloseTicketComponent }

@@ -6,48 +6,52 @@ import { Priority } from 'src/app/models/Priority';
 import { Ticket } from 'src/app/models/Ticket';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ServiceEngineerService {
 
-  private _url:string= 'http://localhost:8181';
+    private _url: string = 'http://localhost:8181';
 
-  constructor(private _http:HttpClient) { }
+    constructor(private _http: HttpClient) { }
 
-  getAgingOfOpenTicket(): Observable<Ticket[]>{
-    let user_name:string = sessionStorage.getItem('user_name');
+    getAgingOfOpenTicket(): Observable<Ticket[]> {
+        let user_name: string = sessionStorage.getItem('user_name');
 
-    return this._http.get<Ticket[]>(this._url + '/serviceEngineer/getAgingOfOpenTicket/' + user_name);
-  }
+        return this._http.get<Ticket[]>(this._url + '/serviceEngineer/getAgingOfOpenTicket/' + user_name);
+    }
 
-  getStatsOfEngineer(): Observable<any>{
-    return this._http.get<any>(this._url + '/serviceEngineer' + '/getStatsOfEngineer');
-  }
+    getStatsOfEngineer(): Observable<any> {
+        return this._http.get<any>(this._url + '/serviceEngineer' + '/getStatsOfEngineer');
+    }
 
-  getStatsOfSeverity(): Observable<any>{
-    return this._http.get<any>(this._url + '/serviceEngineer/getStatsOfSeverity');
-  }
-  
-  getAllTickets(): Observable<Ticket[]>{
-    let user_name:string = sessionStorage.getItem('user_name');
+    getStatsOfSeverity(): Observable<any> {
+        return this._http.get<any>(this._url + '/serviceEngineer/getStatsOfSeverity');
+    }
 
-    return this._http.get<Ticket[]>(this._url + '/ticket/getAll/' + user_name);
-  }
+    getAllTickets(): Observable<Ticket[]> {
+        let user_name: string = sessionStorage.getItem('user_name');
 
-  getListOfDepartments() {
-    // URL: GET: user/getDepartments
-    return this._http.get<Department[]>(this._url + '/user/getDepartments');
-    // throw new Error("Method not implemented.");
-  }
+        return this._http.get<Ticket[]>(this._url + '/ticket/getAll/' + user_name);
+    }
 
-  getListOfPriorities(): Observable<Priority[]>{
-    // url : priority/getAllPriorities
-    return this._http.get<Priority[]>(this._url + '/user/getPriorities');
-  }
+    getListOfDepartments() {
+        // URL: GET: user/getDepartments
+        return this._http.get<Department[]>(this._url + '/user/getDepartments');
+        // throw new Error("Method not implemented.");
+    }
 
-  closeTicket(ticketId: string){
-    // console.log("Before making rest call, ticketId = " + ticketId);
-    return this._http.delete(this._url + '/ticket/close/' +  ticketId);
-  }
-  
+    getListOfPriorities(): Observable<Priority[]> {
+        // url : priority/getAllPriorities
+        return this._http.get<Priority[]>(this._url + '/user/getPriorities');
+    }
+
+    closeTicket(ticketId: string) {
+        // console.log("Before making rest call, ticketId = " + ticketId);
+        return this._http.delete(this._url + '/ticket/close/' + ticketId);
+    }
+
+    updateTicketPriority(updateTicketValues: any){
+
+        return this._http.put( this._url + '/serviceEngineer/updateTicketPriority', updateTicketValues);
+    }
 }
