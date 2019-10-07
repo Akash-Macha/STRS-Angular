@@ -12,59 +12,71 @@ import { ShowAllTicketsSEComponent } from './components/service-engineer/show-al
 import { RaiseTicketComponent } from './components/user/raise-ticket/raise-ticket.component';
 import { ShowAllTicketsComponent } from './components/user/show-all-tickets/show-all-tickets.component';
 import { UserComponent } from './components/user/user.component';
-
+import { UpdateTicketPriorityComponent } from './components/service-engineer/update-ticket-priority/update-ticket-priority.component';
+import { CloseTicketComponent } from './components/service-engineer/close-ticket/close-ticket.component';
 
 
 const routes: Routes = [
-  { path:'', redirectTo:'/login', pathMatch: 'full'},
-  { path:'login', component: LoginComponent},
-  { path:'logout', component: LogoutComponent},
-  
-  {
-    path: 'user', 
-    component: UserComponent,
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: 'login', component: LoginComponent },
+    { path: 'logout', component: LogoutComponent },
 
-    // we've 2 Child Routes: 1. ShowAllTickets, 2. RaiseTicket
-    children: [
-      { path:'showAllTickets', component: ShowAllTicketsComponent },
-      { path:'raiseTicket', component: RaiseTicketComponent },
-    ]
-  },
-  { 
-    path: 'serviceEngineer', 
-    component: ServiceEngineerComponent,
+    {
+        path: 'user',
+        component: UserComponent,
 
-    children: [
-      { path: 'agingOfOpenTickets', component: AgingOfOpenTicketsComponent},
-      { path: 'averageTimeTakenPerEngineer', component: AverageTimeTakenPerEngineerComponent},
-      { path: 'averageTimeTakenPerSeverity', component: AverageTimeTakenPerSeverityComponent},
-      { path: 'showAllTicketsSE', component: ShowAllTicketsSEComponent},
-    ]
-  },
+        // we've 2 Child Routes: 1. ShowAllTickets, 2. RaiseTicket
+        children: [
+            { path: 'showAllTickets', component: ShowAllTicketsComponent },
+            { path: 'raiseTicket', component: RaiseTicketComponent },
+        ]
+    },
+    {
+        path: 'serviceEngineer',
+        component: ServiceEngineerComponent,
 
-  { path: 'pageNotFound', component: PageNotFoundComponent },
-  { path: '**', component: PageNotFoundComponent }
+        children: [
+            { path: 'agingOfOpenTickets', component: AgingOfOpenTicketsComponent },
+            { path: 'averageTimeTakenPerEngineer', component: AverageTimeTakenPerEngineerComponent },
+            { path: 'averageTimeTakenPerSeverity', component: AverageTimeTakenPerSeverityComponent },
+            { path: 'showAllTicketsSE', component: ShowAllTicketsSEComponent },
+
+            // HttpType: PUT
+            { path: 'updateTicketPriority', component: UpdateTicketPriorityComponent },
+
+            // HttpType: DELETE
+            { path: 'closeTicket/:ticketId', component: CloseTicketComponent }
+        ]
+    },
+
+    { path: 'pageNotFound', component: PageNotFoundComponent },
+    { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }
 
-
 export const routingComponents = [
-  LoginComponent,
-  UserComponent,
-  ServiceEngineerComponent,
-  ShowAllTicketsComponent,
-  RaiseTicketComponent,
-  HomeComponent,
+    HomeComponent,
+    LoginComponent,
+    LogoutComponent,
 
-  AgingOfOpenTicketsComponent,
-  AverageTimeTakenPerEngineerComponent,
-  AverageTimeTakenPerSeverityComponent,
-  ShowAllTicketsSEComponent,
+    // User Components
+    UserComponent,
+    ShowAllTicketsComponent,
+    RaiseTicketComponent,
 
-  PageNotFoundComponent
+    // ServiceEngineer Components
+    ServiceEngineerComponent,
+    AgingOfOpenTicketsComponent,
+    AverageTimeTakenPerEngineerComponent,
+    AverageTimeTakenPerSeverityComponent,
+    ShowAllTicketsSEComponent,
+    UpdateTicketPriorityComponent,
+    CloseTicketComponent,
+
+    PageNotFoundComponent
 ]

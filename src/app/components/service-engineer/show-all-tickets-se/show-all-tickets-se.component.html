@@ -21,6 +21,55 @@
       <td>{{ ticket.start_date }}</td>
       <td>{{ ticket.requested_end_date }}</td>
       <td>{{ ticket.priority.value }}</td>
+
+      <!-- <td> 
+          if(listOfTickets.get(i).getStatus().getCode().equals("ON_GO")){
+            
+            <div class="navbar">
+              <div class="dropdown">
+                <button class="dropbtn"> <%= listOfTickets.get(i).getPriority().getValue() %>
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                List<Priority> listOfPriorities = (List<Priority>) session.getAttribute("listOfPriorities");
+              for(Priority priority : listOfPriorities) {
+                if(!priority.getValue().equals( listOfTickets.get(i).getPriority().getValue()) ){
+                    <a href="SE-updateTicketPriroty?TicketId=<%= listOfTickets.get(i).getId() %>&newPriorityValue=<%= priority.getValue() %>"> <%= priority.getValue() %> </a>
+                  }else{
+                    %>
+                  }
+                }
+                </div>
+              </div> 
+            </div>
+          }else{
+            <%= listOfTickets.get(i).getPriority().getValue() %>
+          }
+      </td> -->
+
+
+      <!-- <td *ngIf="ticket.status.value === 'On going'">
+        <mat-form-field>
+          <mat-select [(ngModel)]="newPriorityValue" name="newPriority">
+            <mat-option *ngFor="let priority of listOfPriorities" [value]="ticket.priority.value">
+              {{priority.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td> -->
+
+
       <td>{{ ticket.status.value }}</td>
+
+      <!-- Action: display close ticket button, if ticket is on_going! -->
+      <button class="btn btn-dark" 
+      *ngIf="ticket.status.value === 'On going'; else displayNothing "
+      [(value)]="ticket.id"
+      (click)="closeTicket( ticket.id )"
+      >Close Ticket</button>
+
+      <ng-template #displayNothing>
+        <td></td>
+    </ng-template>
   </tr>
 </table>

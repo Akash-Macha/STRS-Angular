@@ -12,40 +12,31 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import { LogoutComponent } from './components/logout/logout.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { AgingOfOpenTicketsComponent } from './components/service-engineer/aging-of-open-tickets/aging-of-open-tickets.component';
-import { AverageTimeTakenPerEngineerComponent } from './components/service-engineer/average-time-taken-per-engineer/average-time-taken-per-engineer.component';
-import { AverageTimeTakenPerSeverityComponent } from './components/service-engineer/average-time-taken-per-severity/average-time-taken-per-severity.component';
-import { ServiceEngineerComponent } from './components/service-engineer/service-engineer.component';
-import { ShowAllTicketsSEComponent } from './components/service-engineer/show-all-tickets-se/show-all-tickets-se.component';
-import { RaiseTicketComponent } from './components/user/raise-ticket/raise-ticket.component';
-import { ShowAllTicketsComponent } from './components/user/show-all-tickets/show-all-tickets.component';
-import { UserComponent } from './components/user/user.component';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 
+import { AppComponent } from './app.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    UserComponent,
-    ServiceEngineerComponent,
-    LogoutComponent,
-    ShowAllTicketsComponent,
-    RaiseTicketComponent,
-    PageNotFoundComponent,
-    HomeComponent,
 
-    ShowAllTicketsSEComponent,
-    AverageTimeTakenPerEngineerComponent,
-    AverageTimeTakenPerSeverityComponent,
-    AgingOfOpenTicketsComponent
+    routingComponents
+    // LoginComponent,
+    // ServiceEngineerComponent,
+    // LogoutComponent,
+    // ShowAllTicketsComponent,
+    // RaiseTicketComponent,
+    // PageNotFoundComponent,
+    // HomeComponent,
+
+    // ShowAllTicketsSEComponent,
+    // AverageTimeTakenPerEngineerComponent,
+    // AverageTimeTakenPerSeverityComponent,
+    // AgingOfOpenTicketsComponent,
+    // CloseTicketComponent,
+    // UpdateTicketPriorityComponent
   ],
   imports: [
     BrowserModule,

@@ -1,14 +1,14 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Ticket } from 'src/app/models/Ticket';
 import { Department } from 'src/app/models/Department';
+import { Priority } from 'src/app/models/Priority';
+import { Ticket } from 'src/app/models/Ticket';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceEngineerService {
-  
 
   private _url:string= 'http://localhost:8181';
 
@@ -39,4 +39,15 @@ export class ServiceEngineerService {
     return this._http.get<Department[]>(this._url + '/user/getDepartments');
     // throw new Error("Method not implemented.");
   }
+
+  getListOfPriorities(): Observable<Priority[]>{
+    // url : priority/getAllPriorities
+    return this._http.get<Priority[]>(this._url + '/user/getPriorities');
+  }
+
+  closeTicket(ticketId: string){
+    // console.log("Before making rest call, ticketId = " + ticketId);
+    return this._http.delete(this._url + '/ticket/close/' +  ticketId);
+  }
+  
 }
