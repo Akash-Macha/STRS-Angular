@@ -15,3 +15,17 @@ Extract all the common rest calls and put them in Shared Folder!
 
 getPriorities 
 getListOfUsers etc...
+
+---------------------
+
+8th Oct 2019 03:44 PM
+put a Add User button in ShowUsers Component
+make it as a toggle button to show AddUser Component
+
+Then user can fill the details and click "Add User" button
+
+then make restcall from AddUser -> onSubmit() -> _adminServices
+then navigate to "admin/showUsers", to display the updated Users!
+
+
+Apply the same strategy to All the Functionalities
