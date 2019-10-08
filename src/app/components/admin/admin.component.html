@@ -1,0 +1,16 @@
+<div>
+    <h2>Welcome {{ user_name }} ! </h2>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <a routerLink="/admin/showUsers" routerLinkActive="active">Show Users</a>
+        <a routerLink="/admin/showRoles" routerLinkActive="active">Show User Roles</a>
+        <a routerLink="/admin/showDepartments" routerLinkActive="active">Show Departments</a>
+        <a routerLink="/admin/showStatuses" routerLinkActive="active">Show Ticket Statuses</a>
+        <a routerLink="/admin/showTicketPriorities" routerLinkActive="active">Show Ticket Priorities</a>
+        <a routerLink="/logout" routerLinkActive="active" >Logout</a>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>

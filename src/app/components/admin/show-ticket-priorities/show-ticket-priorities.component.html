@@ -1,0 +1,20 @@
+<div>
+    <h2>Ticket Priorities</h2>
+    <div class="center">
+        <table #allPriorities>
+            <tr>
+                <th>Priority Id</th>
+                <th>Value</th>
+                <th>Code</th>
+            </tr>
+
+            <tr *ngFor="let Priority of listOfPriorities">
+                <td>{{ Priority.id }}</td>
+                <td>{{ Priority.value }}</td>
+                <td>{{ Priority.code }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,20 @@
+<div>
+    <h2>Roles</h2>
+    <div class="center">
+        <table #allRoles>
+            <tr>
+                <th>Role Id</th>
+                <th>Name</th>
+                <th>Code</th>
+            </tr>
+
+            <tr *ngFor="let role of listOfRoles">
+                <td>{{ role.id }}</td>
+                <td>{{ role.name }}</td>
+                <td>{{ role.code }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

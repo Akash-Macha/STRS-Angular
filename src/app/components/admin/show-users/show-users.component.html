@@ -1,0 +1,24 @@
+<div>
+    <h2>Users</h2>
+    <div class="center">
+        <table #allUsers>
+            <tr>
+                <th>User Id</th>
+                <th>Name</th>
+                <th>User Name</th>
+                <th>Password</th>
+                <th>Role</th>
+            </tr>
+
+            <tr *ngFor="let user of listOfUsers">
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.user_name }}</td>
+                <td>{{ user.password }}</td>
+                <td>{{ user.role.name }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

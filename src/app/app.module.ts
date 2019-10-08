@@ -13,30 +13,17 @@ import { MatSelectModule } from '@angular/material/select';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
-
 import { AppComponent } from './app.component';
-
+import { ShowUsersComponent } from './components/admin/show-users/show-users.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
 
-    routingComponents
-    // LoginComponent,
-    // ServiceEngineerComponent,
-    // LogoutComponent,
-    // ShowAllTicketsComponent,
-    // RaiseTicketComponent,
-    // PageNotFoundComponent,
-    // HomeComponent,
+    routingComponents,
 
-    // ShowAllTicketsSEComponent,
-    // AverageTimeTakenPerEngineerComponent,
-    // AverageTimeTakenPerSeverityComponent,
-    // AgingOfOpenTicketsComponent,
-    // CloseTicketComponent,
-    // UpdateTicketPriorityComponent
+    ShowUsersComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,3 +7,11 @@ Figure out the reason and Fix it
 
 
 Implement Admin Functionalities
+
+
+-------------------
+
+Extract all the common rest calls and put them in Shared Folder!
+
+getPriorities 
+getListOfUsers etc...

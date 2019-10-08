@@ -1,0 +1,20 @@
+<div>
+    <h2>Ticket Statuses</h2>
+    <div class="center">
+        <table #allStatuses>
+            <tr>
+                <th>Status Id</th>
+                <th>Value</th>
+                <th>Code</th>
+            </tr>
+
+            <tr *ngFor="let status of listOfStatuses">
+                <td>{{ status.id }}</td>
+                <td>{{ status.value }}</td>
+                <td>{{ status.code }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

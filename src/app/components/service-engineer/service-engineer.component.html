@@ -1,12 +1,34 @@
 <h2>Welcome {{ user_name }}! </h2>
 
-<div>
-    <a routerLink="/serviceEngineer/showAllTicketsSE" routerLinkActive="active" class="center button button2">Show All Tickets</a>
-    <a routerLink="/serviceEngineer/averageTimeTakenPerEngineer" routerLinkActive="active" class="center button button2">Average Time Taken Per Engineer</a>
-    <a routerLink="/serviceEngineer/averageTimeTakenPerSeverity" routerLinkActive="active" class="center button button2">Average Time Taken Per Severity</a>
-    <a routerLink="/serviceEngineer/agingOfOpenTickets" routerLinkActive="active" class="center button button2">Aging of Open Tickets</a>
 
-    <a routerLink="/logout" routerLinkActive="active" class="center button button2">Logout</a>
-</div>
+<nav class="navbar navbar-dark bg-dark">
+    <ul>
+        <li class="nav-item active">
+            <a class="nav-link" routerLink="/serviceEngineer/showAllTicketsSE" routerLinkActive="active" class="center button button2">Show All Tickets</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/serviceEngineer/averageTimeTakenPerEngineer" routerLinkActive="active" class="center button button2">Average Time Taken Per Engineer</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/serviceEngineer/averageTimeTakenPerSeverity" routerLinkActive="active" class="center button button2">Average Time Taken Per Severity</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/serviceEngineer/agingOfOpenTickets" routerLinkActive="active" class="center button button2">Aging of Open Tickets</a>
+        </li>
+            
+        <!-- <a routerLink="/logout" routerLinkActive="active" class="center button button2">Logout</a> -->
+
+        <form class="form-inline my-2 my-lg-0">
+            <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button> -->
+
+            <a routerLink="/logout" routerLinkActive="active" class="btn btn-outline-success my-2 my-sm-0">Logout</a>
+
+        </form>
+    </ul>
+</nav>
+
 
 <router-outlet></router-outlet>

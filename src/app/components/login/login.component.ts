@@ -28,8 +28,7 @@ export class LoginComponent implements OnInit {
 
   validate(){
  
-    this._loginService.validateAndGetRole(this.user)
-    .subscribe(
+    this._loginService.validateAndGetRole(this.user).subscribe(
       (data) => {
         if(data.name === 'End User'){
           // Route to user's componenet
@@ -37,13 +36,13 @@ export class LoginComponent implements OnInit {
         }else if(data.name === 'Service Engineer'){
           this.router.navigate(['/serviceEngineer']);
         }
-        // else if(data.name === 'Admin'){
+        else if(data.name === 'Admin'){
 
-        //   this.router.navigate(['/admin']);
-        // }
+          this.router.navigate(['/admin']);
+        }
         else{
           // Wrong Credentials
-          // navigate to login page with optional parameters and display Invalid Credentials
+          // navigate to "login page" with optional parameters and 'display' "Invalid Credentials"
 
           return;
         }
