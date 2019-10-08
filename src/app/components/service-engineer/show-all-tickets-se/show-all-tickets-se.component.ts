@@ -16,7 +16,8 @@ export class ShowAllTicketsSEComponent implements OnInit {
     public tickets: Ticket[];
     public ticketId: number;
     public newPriorityValue: string;
-    public listOfPriorities: Priority[];
+    
+    public listOfPriorities: Priority[] = [];
 
     constructor(private _serviceEngineerService: ServiceEngineerService,
         private _router: Router) { }
@@ -43,7 +44,7 @@ export class ShowAllTicketsSEComponent implements OnInit {
         console.log("\n ngOnDestroy in SHOW-ALL-TICKETS Component!");
     }
 
-    closeTicket(ticketId: string) {
+    closeTicket(ticketId: string): void {
         console.log("new Priority value in updateTicketPriorty funtion = " + ticketId);
 
         /*
@@ -59,10 +60,19 @@ export class ShowAllTicketsSEComponent implements OnInit {
         this._router.navigate(['/serviceEngineer/closeTicket', ticketId]);
     }
 
-    // filterByCurrentPriority( currentPriority: string ){
-    //     console.log("-------------->\n " + JSON.stringify( this.listOfPriorities) );
+    filterByCurrentPriority( currentPriority: string ): Priority[]{
+        console.log("-------------->\n " + JSON.stringify( this.listOfPriorities) );
     
-    //     return this.listOfPriorities.filter( x => x.value != currentPriority );
-    // }
+        // return this.listOfPriorities.filter( x => x.value != currentPriority );
+
+        var filteredListOfPriorities:Priority[] = [];
+
+        // https://stackoverflow.com/a/44689516 ; comment: results?.length > 0
+        for( let i =0 ; i < this.listOfPriorities.length ; ++i)
+            if(this.listOfPriorities[i].value !== currentPriority)
+                filteredListOfPriorities.push( this.listOfPriorities[i] );
+        
+        return filteredListOfPriorities;
+    }
 
 }

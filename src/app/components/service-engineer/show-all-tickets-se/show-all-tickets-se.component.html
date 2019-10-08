@@ -29,13 +29,13 @@
                         <i class="fa fa-caret-down"></i>
                     </button>
 
-                    <div class="dropdown-content" *ngFor="let otherPriority of listOfPriorities">
+                    <div class="dropdown-content" >
                         <!-- need: ticketId & newPriority -->
-                        <!-- <p *ngFor="let otherPriority of filterByCurrentPriority(ticket.priority.value)"> -->
-                            <a [routerLink]="['/updateTicketPriority', ticket.id, otherPriority.value ]" routerLinkActive="active">
+                        <p *ngFor="let otherPriority of filterByCurrentPriority(ticket.priority.value)">
+                            <a [routerLink]="['/serviceEngineer/updateTicketPriority', ticket.id, otherPriority.value ]" routerLinkActive="active">
                                 {{ otherPriority.value }}
                             </a>
-                        <!-- </p> -->
+                        </p>
                     </div>
                 </div>
             </div>

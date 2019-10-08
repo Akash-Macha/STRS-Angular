@@ -59,6 +59,14 @@ export class RaiseTicketComponent implements OnInit {
 		// setting up the requested user_name
 		this.newTicket.requested_by.user_name = sessionStorage.getItem('user_name');
 
+        console.log("REQUESTED END DATE = " + this.newTicket.requested_end_date);
+
+        /* updating the Date w.r.t to generalized TimeZone:
+        motivation: https://stackoverflow.com/a/31732581 */
+        // this.newTicket.start_date =  new Date( this.newTicket.start_date.toString().replace(/-/g, '\/').replace(/T.+/, '') );
+        // this.newTicket.requested_end_date =  new Date( this.newTicket.requested_end_date.toString().replace(/-/g, '\/').replace(/T.+/, '') );
+
+        
 		this._userService.insertTicket(this.newTicket).subscribe(
 			data => {
                 this.router.navigate( ['../showAllTickets', {insertStatus: 'inserted'}], {relativeTo: this.route} );

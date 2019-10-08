@@ -33,8 +33,19 @@ export class UserService {
   insertTicket(newTicket:Ticket): Observable<string>{
     // url :      /user/insertTicket
     // accepts :  Ticket object
-    console.log('BEFORE MAKING REST CALL: TICET = ' + JSON.stringify(newTicket));
+    console.log('BEFORE MAKING REST CALL: TICKET = ' + JSON.stringify(newTicket));
     
     return this._http.post<string>(this._url + '/user/insertTicket', newTicket );
+  }
+
+  // mocking insertTicket
+//   insertTicket(newTicket:Ticket){
+    // url :      /user/insertTicket
+    // accepts :  Ticket object
+    // console.log('BEFORE MAKING REST CALL: TICKET = ' + JSON.stringify(newTicket));
+    // console.log("newTicket.reqENDdate = " + newTicket.requested_end_date);
+    
+    
+    // return this._http.post<string>(this._url + '/user/insertTicket', newTicket );
   }
 }
