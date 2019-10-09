@@ -1,8 +1,5 @@
 <div>
-
     <h1>Welcome to {{title}}</h1>
-
-    <!-- <div class="container h-100 d-flex justify-content-center"> -->
         <h3>Login</h3>
         <form #loginForm #userForm="ngForm" (ngSubmit)="validate()" novalidate>
 
@@ -10,11 +7,48 @@
             <hr />
             {{ user | json }} -->
 
-            <br>
-            <label>User Name:</label><input autofocus type="text" #user_name="ngModel" name="user_name" [(ngModel)]="user.user_name"><br>
-            <label>Password:</label><input type="password" #password="ngModel" name="password" [(ngModel)]="user.password"><br>
+            <div class="form-groupp">
+							<label>User Name:</label>
+							<input 
+							autofocus
+							type="text" 
+							required
+							#user_name="ngModel" 
+							[class.is-invalid]="user_name.invalid && user_name.touched"
+							name="user_name" 
+							[(ngModel)]="user.user_name">
+							<small 
+							class="text-danger"
+							[class.d-none]="!user_nameHasError || user_name.untouched"
+							class="form-control">
+									User Name is required
+							</small>
+						</div>
+						
+						<div class="form-group">
+							<label>Password:</label>
+							<input 
+							type="password" 
+							required
+							#password="ngModel" 
+							name="password" 
+							[class.is-invalid]="password.invalid && password.touched"
+							[(ngModel)]="user.password">
+							<small
+							class="text-danger"
+							[class.d-none]="!passwordHasError || password.untouched"
+							class="form-control">
+									password is required
+							</small>
+					</div>
 
             <button>Login</button>
         </form>
+
+				<small 
+				class="text-danger"
+				*ngIf="invalidUser" >
+				Wrong Credentials!
+				</small>
 
 </div>

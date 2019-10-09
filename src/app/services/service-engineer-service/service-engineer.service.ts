@@ -20,8 +20,8 @@ export class ServiceEngineerService {
         return this._http.get<Ticket[]>(this._url + '/serviceEngineer/getAgingOfOpenTicket/' + user_name);
     }
 
-    getStatsOfEngineer(): Observable<any> {
-        return this._http.get<any>(this._url + '/serviceEngineer' + '/getStatsOfEngineer');
+    getStatsOfEngineers(): Observable<any> {
+        return this._http.get<any>(this._url + '/serviceEngineer' + '/getStatsOfEngineers');
     }
 
     getStatsOfSeverity(): Observable<any> {

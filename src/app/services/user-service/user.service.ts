@@ -30,22 +30,12 @@ export class UserService {
     return this._http.get<Priority[]>(this._url + '/user/getPriorities');
   }
 
-  insertTicket(newTicket:Ticket): Observable<string>{
+  insertTicket(newTicket:Ticket): Observable<any>{
     // url :      /user/insertTicket
     // accepts :  Ticket object
     console.log('BEFORE MAKING REST CALL: TICKET = ' + JSON.stringify(newTicket));
     
-    return this._http.post<string>(this._url + '/user/insertTicket', newTicket );
+    return this._http.post<any>(this._url + '/user/insertTicket', newTicket );
   }
 
-  // mocking insertTicket
-//   insertTicket(newTicket:Ticket){
-    // url :      /user/insertTicket
-    // accepts :  Ticket object
-    // console.log('BEFORE MAKING REST CALL: TICKET = ' + JSON.stringify(newTicket));
-    // console.log("newTicket.reqENDdate = " + newTicket.requested_end_date);
-    
-    
-    // return this._http.post<string>(this._url + '/user/insertTicket', newTicket );
-//   }
 }

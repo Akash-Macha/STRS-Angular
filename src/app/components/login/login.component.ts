@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+
 import { Role } from 'src/app/models/Role';
 import { User } from 'src/app/models/User';
 import { LoginService } from '../../services/login-service/login.service';
@@ -12,18 +13,30 @@ import { LoginService } from '../../services/login-service/login.service';
 export class LoginComponent implements OnInit {
 
   title:string= "Service Ticket Resolution System";
-
   role = new Role();
-
   @Output() dataToEmit = new EventEmitter<Role>();
-
   user = new User();
 
+  public invalidUser: boolean = false;
+
   constructor(private _loginService:LoginService,
-    private route:ActivatedRoute,
+    private _activatedRoute:ActivatedRoute,
     private router:Router) { }
 
   ngOnInit() {
+
+    
+
+    // accetp url parameter to display "Successfully submitted the ticket status"
+    this._activatedRoute.paramMap.subscribe( (params: ParamMap) => {
+
+      let parameterInvalidUser = params.get('invalidUser');
+      if( parameterInvalidUser === 'true')
+        this.invalidUser =  true;
+      else
+        this.invalidUser =  false;
+    } );
+
   }
 
   validate(){
@@ -44,6 +57,7 @@ export class LoginComponent implements OnInit {
           // Wrong Credentials
           // navigate to "login page" with optional parameters and 'display' "Invalid Credentials"
 
+          this.router.navigate( ['/login', {invalidUser: 'true'}] );
           return;
         }
 
@@ -64,6 +78,7 @@ export class LoginComponent implements OnInit {
      },
       (error) => {
         console.error('Error! ', error);
+        this.router.navigate( ['/login', {invalidUser: 'true'}] );
       }
       );
   }

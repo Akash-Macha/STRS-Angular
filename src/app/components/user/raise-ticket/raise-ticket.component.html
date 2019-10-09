@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <h2>Raise a Ticket</h2>
     <form #ticketForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
-        <!-- {{ ticketForm.value | json }} -->
+        {{ ticketForm.value | json }}
 
         <div class="form-group" >
             <label for="issueCategory">Issue Category</label>
@@ -37,7 +37,7 @@
             name="priority" 
             
             [(ngModel)]="newTicket.priority.value"
-            [class.is-invalid]="priorityHasError && priority.touched" >
+            [class.is-invalid]="!!priorityHasError && priority.touched" >
                 <option value="default" selected>Select a Priority</option>
                 <option *ngFor="let eachPriority of listOfPriorities">{{ eachPriority.value }}</option>
             </select>
@@ -45,6 +45,23 @@
         </div>
 
         <div>
+            <label for="">StartDate:</label>
+            <input type="date"
+            #startDate
+            id="startDate"
+            name="startDateName"
+            [(ngModel)]="newTicket.start_date" >
+        </div>
+
+        <div>
+            <label for="RequestedEndDate">Requested End Date</label>
+            <input type="date"
+            #requestedEndDate
+            id="requestedEndDate"
+            name="requestedEndDateName"
+            [(ngModel)]="newTicket.requested_end_date" >
+        </div>
+        <!-- <div>
             <mat-form-field>
                 <mat-label>Start Date</mat-label>
                 <input 
@@ -52,8 +69,8 @@
                 [matDatepicker]="myStartDate" 
                 [matDatepickerFilter]="dateFilter"
                 [(value)]="newTicket.start_date" 
-                readonly [readOnly]="readonly" >
-                <!-- <mat-datepicker-toggle matSuffix [for]="myStartDate" ></mat-datepicker-toggle> -->
+                readonly [readOnly]="!!readonly" >
+                
                 <mat-datepicker #myStartDate></mat-datepicker>
             </mat-form-field>
         </div>
@@ -72,7 +89,7 @@
                 <mat-datepicker-toggle matSuffix [for]="myRequestedEndDate" ></mat-datepicker-toggle>
                 <mat-datepicker #myRequestedEndDate></mat-datepicker>
             </mat-form-field>
-        </div>
+        </div> -->
 
         <button class="btn btn-primary" [disabled]="ticketForm.form.invalid" type="submit">Submit ticket</button>
     </form>
