@@ -15,7 +15,7 @@ export class UserService {
   constructor(private _http:HttpClient) { }
 
   getAllTickets(): Observable<Ticket[]>{
-    let user_name:string = sessionStorage.getItem('user_name');
+    let user_name:string = localStorage.getItem('user_name');
 
     return this._http.get<Ticket[]>(this._url + '/ticket/getAll/' + user_name);
   }

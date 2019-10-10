@@ -10,17 +10,14 @@ export class AdminComponent implements OnInit {
 
     public user_name: string = 'Admin';
 
-    constructor(private router:Router) { }
+    constructor(private router: Router) { }
 
     ngOnInit() {
-
-        if(sessionStorage.getItem('user_name') === undefined || 
-        sessionStorage.getItem('user_name') === ''){
-    
-          // pass optional parameters ! and show "Your are not logged in!"
-          this.router.navigate(['/login']);
-    
+        if (localStorage.getItem('user_name') === null){
+            // pass optional parameters ! and show "Your are not logged in!"
+            this.router.navigate(['/login']);
+            return;
         }
-        this.user_name = sessionStorage.getItem('user_name');
-      }
+        this.user_name = localStorage.getItem('user_name');
+    }
 }

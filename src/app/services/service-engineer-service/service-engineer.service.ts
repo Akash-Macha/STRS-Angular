@@ -15,7 +15,7 @@ export class ServiceEngineerService {
     constructor(private _http: HttpClient) { }
 
     getAgingOfOpenTicket(): Observable<Ticket[]> {
-        let user_name: string = sessionStorage.getItem('user_name');
+        let user_name: string = localStorage.getItem('user_name');
 
         return this._http.get<Ticket[]>(this._url + '/serviceEngineer/getAgingOfOpenTicket/' + user_name);
     }
@@ -29,7 +29,7 @@ export class ServiceEngineerService {
     }
 
     getAllTickets(): Observable<Ticket[]> {
-        let user_name: string = sessionStorage.getItem('user_name');
+        let user_name: string = localStorage.getItem('user_name');
 
         return this._http.get<Ticket[]>(this._url + '/ticket/getAll/' + user_name);
     }
