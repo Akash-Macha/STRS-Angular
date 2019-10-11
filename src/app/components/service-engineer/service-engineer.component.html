@@ -1,75 +1,40 @@
-<div>
-    <h2>Welcome {{ user_name }}! </h2>
+<div class="text-center">
+    <h2>Service Engineer Portal</h2>
+    <p>Welcome {{ user_name }} ! </p>
 </div>
 
+<div class="bs-example">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <!-- <a href="#" class="navbar-brand">Brand</a> -->
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button> 
 
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-
-        <a routerLink="/serviceEngineer/showAllTicketsSE" routerLinkActive="active" >Show All Tickets</a>
-        <a routerLink="/serviceEngineer/averageTimeTakenPerEngineer" routerLinkActive="active" >Average Time Taken Per Engineer</a>
-        <a routerLink="/serviceEngineer/averageTimeTakenPerSeverity" routerLinkActive="active" >Average Time Taken Per Severity</a>
-        <a routerLink="/serviceEngineer/agingOfOpenTickets" routerLinkActive="active" >Aging of Open Tickets</a>
-        <a routerLink="/logout" routerLinkActive="active" class="btn btn-outline-success my-2 my-sm-0">Logout</a>
-
-
-        <!-- <a class="nav-link" routerLink="/serviceEngineer/showAllTicketsSE" routerLinkActive="active" >Show All Tickets</a>
-        <a class="nav-link" routerLink="/serviceEngineer/averageTimeTakenPerEngineer" routerLinkActive="active" >Average Time Taken Per Engineer</a>
-        <a class="nav-link" routerLink="/serviceEngineer/averageTimeTakenPerSeverity" routerLinkActive="active" >Average Time Taken Per Severity</a>
-        <a class="nav-link" routerLink="/serviceEngineer/agingOfOpenTickets" routerLinkActive="active" >Aging of Open Tickets</a>
-        <a routerLink="/logout" routerLinkActive="active" class="btn btn-outline-success my-2 my-sm-0">Logout</a> -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav">
+                    <a routerLink="/serviceEngineer/showAllTicketsSE" routerLinkActive="active" class="nav-item nav-link">Show All Tickets</a>
+                    <a routerLink="/serviceEngineer/averageTimeTakenPerEngineer" routerLinkActive="active" class="nav-item nav-link">Average Time Taken Per Engineer</a>
+                    <a routerLink="/serviceEngineer/averageTimeTakenPerSeverity" routerLinkActive="active" class="nav-item nav-link">Average Time Taken Per Severity</a>
+                    <a routerLink="/serviceEngineer/agingOfOpenTickets" routerLinkActive="active" class="nav-item nav-link">Aging of Open Tickets</a>
+                </div>
+                <div class="navbar-nav ml-auto">
+                    <a routerLink="/logout" routerLinkActive="active" class="btn btn-outline-success my-2 my-sm-0">Logout</a>
+                </div>
+            </div>
+        </nav>
     </div>
-</nav>
-
-
-<!-- <nav class="navbar navbar-dark bg-dark"> -->
-<!-- <nav class="navbar navbar-default navbar-fixed-top">
-    <ul>
-        <li class="nav-item active">
-            <a class="nav-link" routerLink="/serviceEngineer/showAllTicketsSE" routerLinkActive="active" class="center button button2">Show All Tickets</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" routerLink="/serviceEngineer/averageTimeTakenPerEngineer" routerLinkActive="active" class="center button button2">Average Time Taken Per Engineer</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" routerLink="/serviceEngineer/averageTimeTakenPerSeverity" routerLinkActive="active" class="center button button2">Average Time Taken Per Severity</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" routerLink="/serviceEngineer/agingOfOpenTickets" routerLinkActive="active" class="center button button2">Aging of Open Tickets</a>
-        </li>
-
-        <a routerLink="/logout" routerLinkActive="active" class="btn btn-outline-success my-2 my-sm-0">Logout</a>
-    </ul>
-</nav> -->
-
-
-<!-- <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">STRS</a>
-          </div>
-          <ul class="nav navbar-nav">
-            <li class="active">
-                <a class="nav-link" routerLink="/serviceEngineer/showAllTicketsSE" routerLinkActive="active" class="center button button2">Show All Tickets</a>
-            </li>
-
-            <li>
-                <a class="nav-link" routerLink="/serviceEngineer/averageTimeTakenPerEngineer" routerLinkActive="active" class="center button button2">Average Time Taken Per Engineer</a>
-            </li>
-
-            <li>
-                <a class="nav-link" routerLink="/serviceEngineer/averageTimeTakenPerSeverity" routerLinkActive="active" class="center button button2">Average Time Taken Per Severity</a>
-            </li>
-
-            <li>
-                <a class="nav-link" routerLink="/serviceEngineer/agingOfOpenTickets" routerLinkActive="active" class="center button button2">Aging of Open Tickets</a>
-            </li>
-          </ul>
-        </div>
-      </nav> -->
-
 
 <router-outlet></router-outlet>
+
+
+
+
+
+<!-- 
+
+    <a routerLink="/serviceEngineer/showAllTicketsSE" routerLinkActive="active" >Show All Tickets</a>
+    <a routerLink="/serviceEngineer/averageTimeTakenPerEngineer" routerLinkActive="active" >Average Time Taken Per Engineer</a>
+    <a routerLink="/serviceEngineer/averageTimeTakenPerSeverity" routerLinkActive="active" >Average Time Taken Per Severity</a>
+    <a routerLink="/serviceEngineer/agingOfOpenTickets" routerLinkActive="active" >Aging of Open Tickets</a>
+    <a routerLink="/logout" routerLinkActive="active" class="btn btn-outline-success my-2 my-sm-0">Logout</a>
+ -->

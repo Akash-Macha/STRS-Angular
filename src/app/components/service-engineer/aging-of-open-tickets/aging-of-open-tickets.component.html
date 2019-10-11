@@ -1,26 +1,28 @@
 <!-- <p>aging-of-open-tickets works!</p> -->
 <!-- {{ Statistics | json }} -->
 
-<h2>Aging of Open Tickets</h2>
-<table>
-  <tr>
-    <th>Ticket Id</th>
-    <th>Priority</th>
-    <th>Start Date</th>
-    <th>AGE</th>
-    <th>Status</th>
-    <th>Message</th>
-    <th>Requested by</th>
-    <th>Requested End Date</th>
-  </tr>
-    <tr *ngFor="let statistic of Statistics">
-      <td> {{ statistic[0] }}</td>
-      <td> {{ statistic[1] }}</td>
-      <td> {{ statistic[2] }}</td>
-      <td> {{ statistic[3] }}</td>
-      <td> {{ statistic[4] }}</td>
-      <td> {{ statistic[5] }}</td>
-      <td> {{ statistic[6] }}</td>
-      <td> {{ statistic[7] }}</td>
-	</tr>
-</table>
+<div class="text-center">
+    <h2>Aging of Open Tickets</h2>
+    <table>
+        <tr>
+            <th>Ticket Id</th>
+            <th>Priority</th>
+            <th>Start Date</th>
+            <th>AGE</th>
+            <th>Status</th>
+            <th>Message</th>
+            <th>Requested by</th>
+            <th>Requested End Date</th>
+        </tr>
+        <tr *ngFor="let statistic of Statistics">
+            <td> {{ statistic[0] }}</td>
+            <td> {{ statistic[1] }}</td>
+            <td> {{ statistic[2] }}</td>
+            <td> {{ statistic[3] }}</td>
+            <td> {{ statistic[4] }}</td>
+            <td> {{ statistic[5] }}</td>
+            <td> {{ statistic[6] }}</td>
+            <td> {{ statistic[7] }}</td>
+        </tr>
+    </table>
+</div>

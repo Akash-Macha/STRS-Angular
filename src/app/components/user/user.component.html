@@ -3,21 +3,33 @@
     <p>Welcome {{ user_name }} !</p>
 </div>
 
-<!--
-    Routing Links:
+
+<div class="bs-example">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <!-- <a href="#" class="navbar-brand">Brand</a> -->
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button> 
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav">
+                    <a routerLink="/user/showAllTickets" routerLinkActive="active" class="nav-item nav-link">Show All Tickets</a>
+                    <a routerLink="/user/raiseTicket" routerLinkActive="active" class="nav-item nav-link">Raise A Ticket</a>
+                </div>
+                <div class="navbar-nav ml-auto">
+                    <a routerLink="/logout" routerLinkActive="active" class="btn btn-outline-success my-2 my-sm-0">Logout</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+<router-outlet></router-outlet>
+
+
+<!-- 
 
     <a routerLink="/user/showAllTickets" routerLinkActive="active">Show All Tickets</a>
     <a routerLink="/user/raiseTicket" routerLinkActive="active">Raise A Ticket</a>
+
     <a routerLink="/logout" routerLinkActive="active" class="btn btn-outline-success my-2 my-sm-0">Logout</a>
  -->
-
- <!-- <nav class="navbar navbar-default navbar-fixed-top"> -->
-<nav class="navbar navbar-inverse">
-    <div class="container">
-            <a routerLink="/user/showAllTickets" routerLinkActive="active">Show All Tickets</a>
-            <a routerLink="/user/raiseTicket" routerLinkActive="active">Raise A Ticket</a>
-            <a routerLink="/logout" routerLinkActive="active" class="btn btn-outline-success my-2 my-sm-0">Logout</a>
-    </div>
-</nav>
-    
-<router-outlet></router-outlet>

@@ -1,12 +1,15 @@
 <div>
     <h1>Welcome to {{title}}</h1>
+</div>
+
+
+
+
+
+
+<div>
         <h3>Login</h3>
         <form #loginForm #userForm="ngForm" (ngSubmit)="validate()" novalidate>
-
-            <!-- {{ userForm.value | json }}
-            <hr />
-            {{ user | json }} -->
-
             <div class="form-groupp">
 							<label>User Name:</label>
 							<input 
@@ -41,14 +44,11 @@
 									password is required
 							</small>
 					</div>
-
             <button>Login</button>
         </form>
-
 				<small 
 				class="text-danger"
 				*ngIf="invalidUser" >
 				Wrong Credentials!
 				</small>
-
 </div>
