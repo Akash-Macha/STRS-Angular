@@ -9,7 +9,7 @@ import { Ticket } from 'src/app/models/Ticket';
 })
 export class AgingOfOpenTicketsComponent implements OnInit {
 
-  public Statistics:Ticket[];
+  public Statistics: any; //[Ticket, number]; // [, age: number]
   
   private _url:string= 'http://localhost:8181';
 
@@ -23,10 +23,4 @@ export class AgingOfOpenTicketsComponent implements OnInit {
     );
   }
 
-  getAge(statistic: any): number{ /* motivation: https://stackoverflow.com/a/43735902 */
-    let diff:number = Math.abs(new Date().getTime() - new Date(statistic.start_date).getTime());
-    let diffDays: number = Math.ceil(diff / (1000 * 3600 * 24)); 
-
-    return diffDays;
-  }
 }

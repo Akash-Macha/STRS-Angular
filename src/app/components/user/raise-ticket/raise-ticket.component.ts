@@ -57,7 +57,7 @@ export class RaiseTicketComponent implements OnInit {
 			}
 		}
 		// setting up the requested user_name
-		this.newTicket.requested_by.user_name = sessionStorage.getItem('user_name');
+		this.newTicket.requested_by.user_name = localStorage.getItem('user_name');
 
         console.log("REQUESTED END DATE = " + this.newTicket.requested_end_date);
 

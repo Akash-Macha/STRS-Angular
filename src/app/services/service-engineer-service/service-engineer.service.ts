@@ -14,10 +14,10 @@ export class ServiceEngineerService {
 
     constructor(private _http: HttpClient) { }
 
-    getAgingOfOpenTicket(): Observable<Ticket[]> {
+    getAgingOfOpenTicket(): Observable<[Ticket, number]> {
         let user_name: string = localStorage.getItem('user_name');
 
-        return this._http.get<Ticket[]>(this._url + '/serviceEngineer/getAgingOfOpenTicket/' + user_name);
+        return this._http.get<[Ticket, number]>(this._url + '/serviceEngineer/getAgingOfOpenTicket/' + user_name);
     }
 
     getStatsOfEngineers(): Observable<any> {

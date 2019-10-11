@@ -2,10 +2,14 @@
     <h2>Welcome {{ user_name }} ! </h2>
 </div>
 
-<nav>
-        <a routerLink="/user/showAllTickets" routerLinkActive="active">Show All Tickets</a><br>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+<!-- <nav class="navbar navbar-dark bg-dark "> -->
+    <div class="container">
+        <a routerLink="/user/showAllTickets" routerLinkActive="active">Show All Tickets</a>
         <a routerLink="/user/raiseTicket" routerLinkActive="active">Raise A Ticket</a>
-        <a routerLink="/logout" routerLinkActive="active" class="center button button2">Logout</a>
+        <a routerLink="/logout" routerLinkActive="active" class="btn btn-outline-success my-2 my-sm-0">Logout</a>
+    </div>
 </nav>
 
 <router-outlet></router-outlet>

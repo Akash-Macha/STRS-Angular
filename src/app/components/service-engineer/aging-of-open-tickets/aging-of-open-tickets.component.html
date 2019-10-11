@@ -14,13 +14,13 @@
     <th>Requested End Date</th>
   </tr>
     <tr *ngFor="let statistic of Statistics">
-    	<td> {{ statistic.id }}</td>
-    	<td> {{ statistic.priority.id }}</td>
-    	<td> {{ statistic.start_date }}</td>
-    	<td> {{ getAge(statistic) }}</td>
-    	<td> {{ statistic.status.value }}</td>
-    	<td> {{ statistic.message }}</td>
-    	<td> {{ statistic.requested_by.name }}</td>
-    	<td> {{ statistic.requested_end_date }}</td>
+      <td> {{ statistic[0] }}</td>
+      <td> {{ statistic[1] }}</td>
+      <td> {{ statistic[2] }}</td>
+      <td> {{ statistic[3] }}</td>
+      <td> {{ statistic[4] }}</td>
+      <td> {{ statistic[5] }}</td>
+      <td> {{ statistic[6] }}</td>
+      <td> {{ statistic[7] }}</td>
 	</tr>
 </table>
