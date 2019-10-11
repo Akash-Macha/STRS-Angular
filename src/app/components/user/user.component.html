@@ -1,15 +1,23 @@
-<div>
-    <h2>Welcome {{ user_name }} ! </h2>
+<div class="text-center">
+    <h2>User Portal</h2>
+    <p>Welcome {{ user_name }} !</p>
 </div>
 
+<!--
+    Routing Links:
 
-<nav class="navbar navbar-default navbar-fixed-top">
-<!-- <nav class="navbar navbar-dark bg-dark "> -->
+    <a routerLink="/user/showAllTickets" routerLinkActive="active">Show All Tickets</a>
+    <a routerLink="/user/raiseTicket" routerLinkActive="active">Raise A Ticket</a>
+    <a routerLink="/logout" routerLinkActive="active" class="btn btn-outline-success my-2 my-sm-0">Logout</a>
+ -->
+
+ <!-- <nav class="navbar navbar-default navbar-fixed-top"> -->
+<nav class="navbar navbar-inverse">
     <div class="container">
-        <a routerLink="/user/showAllTickets" routerLinkActive="active">Show All Tickets</a>
-        <a routerLink="/user/raiseTicket" routerLinkActive="active">Raise A Ticket</a>
-        <a routerLink="/logout" routerLinkActive="active" class="btn btn-outline-success my-2 my-sm-0">Logout</a>
+            <a routerLink="/user/showAllTickets" routerLinkActive="active">Show All Tickets</a>
+            <a routerLink="/user/raiseTicket" routerLinkActive="active">Raise A Ticket</a>
+            <a routerLink="/logout" routerLinkActive="active" class="btn btn-outline-success my-2 my-sm-0">Logout</a>
     </div>
 </nav>
-
+    
 <router-outlet></router-outlet>

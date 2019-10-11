@@ -1,17 +1,34 @@
-<div>
-    <h2>Welcome {{ user_name }} ! </h2>
+<div class="text-center">
+    <h2>Admin Portal</h2>
+    <p>Welcome {{ user_name }} ! </p>
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <a routerLink="/admin/showUsers" routerLinkActive="active">Show Users</a>
-        <a routerLink="/admin/showRoles" routerLinkActive="active">Show User Roles</a>
-        <a routerLink="/admin/showDepartments" routerLinkActive="active">Show Departments</a>
-        <a routerLink="/admin/showStatuses" routerLinkActive="active">Show Ticket Statuses</a>
-        <a routerLink="/admin/showTicketPriorities" routerLinkActive="active">Show Ticket Priorities</a>
-        <!-- <a routerLink="/logout" routerLinkActive="active" >Logout</a> -->
-        <a routerLink="/logout" routerLinkActive="active" class="btn btn-outline-success my-2 my-sm-0">Logout</a>
+<div class="bs-example">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <!-- <a href="#" class="navbar-brand">Brand</a> -->
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button> 
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav">
+                    
+                    <!--  class="nav-item nav-link"  -->
+                    <a routerLink="/admin/showUsers" routerLinkActive="active"  class="nav-item nav-link" >Show Users</a>
+
+                    <a routerLink="/admin/showRoles" routerLinkActive="active" class="nav-item nav-link">Show User Roles</a>
+                    <a routerLink="/admin/showDepartments" routerLinkActive="active" class="nav-item nav-link">Show Departments</a>
+                    <a routerLink="/admin/showStatuses" routerLinkActive="active" class="nav-item nav-link">Show Ticket Statuses</a>
+                    <a routerLink="/admin/showTicketPriorities" routerLinkActive="active" class="nav-item nav-link">Show Ticket Priorities</a>
+
+                    
+                </div>
+                <div class="navbar-nav ml-auto">
+                    <a routerLink="/logout" routerLinkActive="active" class="btn btn-outline-success my-2 my-sm-0">Logout</a>
+                </div>
+            </div>
+        </nav>
     </div>
-</nav>
+
 
 <router-outlet></router-outlet>
