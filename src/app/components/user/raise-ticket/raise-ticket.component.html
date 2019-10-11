@@ -4,31 +4,40 @@
 
 <div class="container-fluid">
     <form #ticketForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
-        <!-- {{ ticketForm.value | json }} -->
+        {{ ticketForm.value | json }}
 
         <div class="form-group" >
             <label for="issueCategory">Issue Category</label>
             <select 
             class="custom-select" 
-            id="issueCategory"
+            (blur)="validateIssueCategory(issueCategory.value)" 
+            (change)="validateIssueCategory(issueCategory.value)" 
             #issueCategory="ngModel" 
             name="issueCategory" 
             [(ngModel)]="newTicket.category.name">
-                <option selected>Select a category</option>
+                <option value="default" >Select a category</option>
                 <option *ngFor="let department of listOfDepartments" 
                 >{{ department.name }}</option>
             </select>
+
+            <small class="text-danger"
+            [class.d-none]="!issueCategoryHasError || issueCategory.untouched">
+                Please choose a Issue Category
+            </small>
         </div>
 
         <div class="form-group">
-            <label for="message">Message:</label>
+            <label for="message">Message</label>
             <textarea 
             class="form-control" 
             name="message"
-            id="message"
             #message
             [(ngModel)]="newTicket.message"
             rows="3"></textarea>
+
+            <small class="text-danger">
+                Please
+            </small>
         </div>
 
         <!-- {{ newTicket.priority.value }} -->
@@ -36,19 +45,51 @@
             <label for="Priority">Priority</label>
             <select 
             class="custom-select" 
+            (blur)="validatePriority(priority.value)"
+            (change)="validatePriority(priority.value)"
             #priority="ngModel" 
             name="priority" 
-            
             [(ngModel)]="newTicket.priority.value"
             [class.is-invalid]="!!priorityHasError && priority.touched" >
                 <option value="default" selected>Select a Priority</option>
                 <option *ngFor="let eachPriority of listOfPriorities">{{ eachPriority.value }}</option>
             </select>
-            <small class="text-danger" [class.d-none]="!priorityHasError || priority.untouched">Please choose a priority</small>      
+            <small class="text-danger" 
+            [class.d-none]="!priorityHasError || priority.untouched">
+                Please choose a priority
+            </small>      
         </div>
 
-        <div>
-            <label for="">StartDate:</label>
+
+
+        <div class="row">
+            <div class="col-sm-6"> 
+                <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                    <label class="control-label" for="datepicker-start">Start Date</label>
+                    <!-- <input type="text" class="form-control" id="datepicker-start"> -->
+                    <input type="date"
+                    #startDate
+                    class="form-control"
+                    name="startDateName"
+                    [(ngModel)]="newTicket.start_date" >
+                </div>
+            </div>
+            <div class="col-sm-6"> 
+                <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                    <label class="control-label" for="datepicker-end">End Date</label>
+                    <!-- <input type="text" class="form-control" id="datepicker-end"> -->
+                    <input type="date"
+                    #requestedEndDate
+                    class="form-control"
+                    name="requestedEndDateName"
+                    [(ngModel)]="newTicket.requested_end_date" >
+                </div>
+            </div>
+        </div>
+
+
+        <!-- <div>
+            <label for="">Start Date:</label>
             <input type="date"
             #startDate
             id="startDate"
@@ -60,11 +101,13 @@
             <label for="RequestedEndDate">Requested End Date</label>
             <input type="date"
             #requestedEndDate
-            id="requestedEndDate"
             name="requestedEndDateName"
             [(ngModel)]="newTicket.requested_end_date" >
-        </div>
-        <!-- <div>
+        </div> -->
+
+
+
+         <!-- <div>
             <mat-form-field>
                 <mat-label>Start Date</mat-label>
                 <input 
@@ -76,8 +119,8 @@
                 
                 <mat-datepicker #myStartDate></mat-datepicker>
             </mat-form-field>
-        </div>
-
+        </div> -->
+<!--
         <div>
             <mat-form-field>
                 <mat-label>Requested End Date</mat-label>
@@ -94,6 +137,14 @@
             </mat-form-field>
         </div> -->
 
-        <button class="btn btn-primary" [disabled]="ticketForm.form.invalid" type="submit">Submit ticket</button>
+        <!-- <button class="btn btn-primary" 
+        [disabled]="ticketForm.form.invalid" 
+        type="submit">Submit ticket</button> -->
+
+
+        <button class="btn btn-primary" 
+        [disabled]="ticketForm.form.invalid || priorityHasError || issueCategoryHasError" 
+        type="submit">Submit form</button>
+
     </form>
 </div>
