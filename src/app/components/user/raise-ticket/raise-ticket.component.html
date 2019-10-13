@@ -9,7 +9,7 @@
         <div class="form-group" >
             <label for="issueCategory">Issue Category</label>
             <select 
-            class="custom-select" 
+            class="custom-select"
             (blur)="validateIssueCategory(issueCategory.value)" 
             (change)="validateIssueCategory(issueCategory.value)" 
             #issueCategory="ngModel" 
@@ -29,14 +29,17 @@
         <div class="form-group">
             <label for="message">Message</label>
             <textarea 
+            required
+            minlength="5"
             class="form-control" 
             name="message"
             #message
             [(ngModel)]="newTicket.message"
             rows="3"></textarea>
 
-            <small class="text-danger">
-                Please
+            <small class="text-danger"
+            [class.d-none]="!messageHasError || message.untouched">
+                Please type a message
             </small>
         </div>
 
@@ -50,7 +53,7 @@
             #priority="ngModel" 
             name="priority" 
             [(ngModel)]="newTicket.priority.value"
-            [class.is-invalid]="!!priorityHasError && priority.touched" >
+            [class.is-invalid]="!priorityHasError && priority.touched" >
                 <option value="default" selected>Select a Priority</option>
                 <option *ngFor="let eachPriority of listOfPriorities">{{ eachPriority.value }}</option>
             </select>
@@ -59,8 +62,6 @@
                 Please choose a priority
             </small>      
         </div>
-
-
 
         <div class="row">
             <div class="col-sm-6"> 
