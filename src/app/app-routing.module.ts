@@ -26,6 +26,7 @@ import { UpdateTicketPriorityComponent } from './components/service-engineer/upd
 import { RaiseTicketComponent } from './components/user/raise-ticket/raise-ticket.component';
 import { ShowAllTicketsComponent } from './components/user/show-all-tickets/show-all-tickets.component';
 import { UserComponent } from './components/user/user.component';
+import { AuthGuard } from './components/_guards/auth.guard';
 
 
 const routes: Routes = [
@@ -33,13 +34,24 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'logout', component: LogoutComponent },
 
+    
+
     {
         path: 'user', component: UserComponent,
 
         // we've 2 Child Routes: 1. ShowAllTickets, 2. RaiseTicket
         children: [
-            { path: 'showAllTickets', component: ShowAllTicketsComponent },
-            { path: 'raiseTicket', component: RaiseTicketComponent },
+            
+            {   
+                path: 'showAllTickets', 
+                component: ShowAllTicketsComponent,
+                // canActivate: [AuthGuard]
+            },
+            { 
+                path: 'raiseTicket', 
+                component: RaiseTicketComponent,
+                // canActivate: [AuthGuard]
+            },
         ]
     },
     {

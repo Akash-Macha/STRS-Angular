@@ -5,6 +5,7 @@ import { Department } from 'src/app/models/Department';
 import { Priority } from 'src/app/models/Priority';
 import { Ticket } from '../../models/Ticket';
 
+
 @Injectable({
   providedIn: 'root'
 })

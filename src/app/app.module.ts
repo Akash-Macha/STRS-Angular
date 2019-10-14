@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ShowUsersComponent } from './components/admin/show-users/show-users.component';
+import { AuthGuard } from './components/_guards/auth.guard';
 
 
 @NgModule({
@@ -42,7 +43,9 @@ import { ShowUsersComponent } from './components/admin/show-users/show-users.com
 
     MatNativeDateModule,
   ],
-  providers: [],
+  providers: [
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

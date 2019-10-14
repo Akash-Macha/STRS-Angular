@@ -67,12 +67,12 @@ export class RaiseTicketComponent implements OnInit {
         console.log("Ticket before hitting service = " + JSON.stringify( this.newTicket ));
         
 
-        // this._userService.insertTicket(this.newTicket).subscribe(
-        //     data => {
-        //         this.router.navigate(['../showAllTickets', { insertStatus: 'inserted' }], { relativeTo: this.route });
-        //     },
-        //     error => console.log("ERROR in _userService.insertTicket" + JSON.stringify(error))
-        // );
+        this._userService.insertTicket(this.newTicket).subscribe(
+            data => {
+                this.router.navigate(['../showAllTickets', { insertStatus: 'inserted' }], { relativeTo: this.route });
+            },
+            error => console.log("ERROR in _userService.insertTicket" + JSON.stringify(error))
+        );
     }
 
     // AngularMaterial:  Filtering out Saturdays and Sundays
@@ -82,26 +82,33 @@ export class RaiseTicketComponent implements OnInit {
     }
 
     // updating newTicket.requested_end_date onChange of the requested_end_date input field
-    updateRequestedEndDate(change: string, event: any) {
-        this.newTicket.requested_end_date = event.value;
+    updateRequestedEndDate(requestedEndDate: any) { //change: string, event: any) {
+        // console.log("updateRequestedEndDate = " + requestedEndDate.value);
+        
+        this.newTicket.requested_end_date = requestedEndDate.value  ; // event.value;
+
     }
 
     validateIssueCategory(value: any) {
-        console.log("Hit -> validateIssueCategory");
+        // console.log("Hit -> validateIssueCategory");
         
         if (value === 'default') {
             this.issueCategoryHasError = true;
+            console.log("true");
         } else {
             this.issueCategoryHasError = false;
+            console.log("false");
         }
     }
 
     validatePriority(value: any) {
-        console.log("Hit -> validatePriority");
+        // console.log("Hit -> validatePriority");
         if (value === 'default') {
             this.priorityHasError = true;
+            console.log("true");            
         } else {
             this.priorityHasError = false;
+            console.log("false");
         }
     }
 

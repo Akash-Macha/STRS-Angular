@@ -10,13 +10,15 @@ export class ServiceEngineerComponent implements OnInit {
 
     public user_name: string = localStorage.getItem('user_name');
 
-    constructor(private router: Router) { }
+    constructor(private _router: Router) { }
 
     ngOnInit() {
         if (localStorage.getItem('user_name') === null){
             // pass optional parameters ! and show "Your are not logged in!"
-            this.router.navigate(['/login']);
+            this._router.navigate(['/login']);
             return;
         }
+
+        this._router.navigate(['/serviceEngineer/showAllTicketsSE']);
     }
 }

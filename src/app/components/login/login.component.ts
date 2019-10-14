@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
         private router: Router) { }
 
     ngOnInit() {
-        console.log("localStorage = " + localStorage.getItem('roleName'));
+        // console.log("localStorage = " + localStorage.getItem('roleName'));
 
         /**
          * if he/she tries to visit /login after loggin in
@@ -61,12 +61,12 @@ export class LoginComponent implements OnInit {
             (data) => {
                 if (data.name === 'End User') {
                     // Route to user's componenet
-                    this.router.navigate(['/user']);
+                    this.router.navigate(['/user/showAllTickets']);
                 } else if (data.name === 'Service Engineer') {
-                    this.router.navigate(['/serviceEngineer']);
+                    this.router.navigate(['/serviceEngineer/showAllTicketsSE']);
                 }
                 else if (data.name === 'Admin') {
-                    this.router.navigate(['/admin']);
+                    this.router.navigate(['/admin/showUsers']);
                 }
                 else {
                     // Wrong Credentials
@@ -87,7 +87,7 @@ export class LoginComponent implements OnInit {
                     // setting up "user_name" & "roleName" in the localStorage!
                     localStorage.setItem("user_name", user_name);
                     localStorage.setItem("roleName", roleName);
-                    console.log('--> ' + localStorage.getItem('user_name'));
+                    // console.log('--> ' + localStorage.getItem('user_name'));
                 }
             },
             (error) => {

@@ -32,9 +32,8 @@
                             [(ngModel)]="user.user_name">
 
                         <small 
-                        class="text-danger" 
-                        [class.d-none]="!user_nameHasError || user_name.untouched"
-
+                            class="text-danger" 
+                            [class.d-none]="!user_nameHasError || user_name.untouched"
                             class="form-control">
                             User Name is required
                         </small>
